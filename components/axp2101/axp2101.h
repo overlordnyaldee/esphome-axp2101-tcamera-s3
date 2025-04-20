@@ -43,8 +43,8 @@ public:
   float get_setup_priority() const override;
   void update() override;
 
-private:
-    static std::string GetStartupReason();
+// private:
+//     static std::string GetStartupReason();
 
 protected:
     sensor::Sensor *batteryvoltage_sensor_;
