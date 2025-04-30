@@ -49,8 +49,8 @@ void AXP2101Component::setup()
     // uint16_t vol = PMU.getSysPowerDownVoltage();
     // ESP_LOGCONFIG(TAG, "->  getSysPowerDownVoltage:%u", vol);
 
-    // // Set VSY off voltage as 2600mV , Adjustment range 2600mV ~ 3300mV
-    // PMU.setSysPowerDownVoltage(2600);
+    // Set VSY off voltage as 2600mV , Adjustment range 2600mV ~ 3300mV
+    PMU.setSysPowerDownVoltage(2600);
 
     // vol = PMU.getSysPowerDownVoltage();
     // ESP_LOGCONFIG(TAG, "->  getSysPowerDownVoltage:%u", vol);
@@ -71,7 +71,7 @@ void AXP2101Component::setup()
     // // 500~1200mV,10mV/step,71steps
     // // 1220~1540mV,20mV/step,17steps
     // // 1600~3400mV,100mV/step,19steps
-    // PMU.setDC3Voltage(3300);
+    PMU.setDC3Voltage(3100);  //Extern 3100~ 3400V
     // ESP_LOGCONFIG(TAG, "DC3  : %s   Voltage:%u mV",  PMU.isEnableDC3()  ? "+" : "-", PMU.getDC3Voltage());
 
     // // DCDC4 IMAX=1.5A
@@ -88,23 +88,23 @@ void AXP2101Component::setup()
 
     //ALDO1 IMAX=300mA
     //500~3500mV, 100mV/step,31steps
-    PMU.setALDO1Voltage(1800);
+    PMU.setALDO1Voltage(1500); // CAM DVDD
 
     //ALDO2 IMAX=300mA
     //500~3500mV, 100mV/step,31steps
-    PMU.setALDO2Voltage(2800);
+    PMU.setALDO2Voltage(3000); // CAM DVDD
 
     //ALDO3 IMAX=300mA
     //500~3500mV, 100mV/step,31steps
-    // PMU.setALDO3Voltage(3300);
+    PMU.setALDO3Voltage(3300); // PIR VDD
 
     //ALDO4 IMAX=300mA
     //500~3500mV, 100mV/step,31steps
-    PMU.setALDO4Voltage(3000);
+    PMU.setALDO4Voltage(3000); // CAM AVDD
 
     //BLDO1 IMAX=300mA
     //500~3500mV, 100mV/step,31steps
-    // PMU.setBLDO1Voltage(3300);
+    PMU.setBLDO1Voltage(3300); // MIC VDD
 
     // //BLDO2 IMAX=300mA
     // //500~3500mV, 100mV/step,31steps
@@ -125,14 +125,14 @@ void AXP2101Component::setup()
 
     // PMU.enableDC1();
     // PMU.enableDC2();
-    // PMU.enableDC3();
+    PMU.enableDC3();
     // PMU.enableDC4();
     // PMU.enableDC5();
     PMU.enableALDO1();
     PMU.enableALDO2();
-    // PMU.enableALDO3(); // This is the speaker
+    PMU.enableALDO3(); // This is the speaker
     PMU.enableALDO4();
-    // PMU.enableBLDO1();
+    PMU.enableBLDO1();
     // PMU.enableBLDO2();
     // PMU.enableCPUSLDO();
     // PMU.enableDLDO1(); // This is the vibration motor
